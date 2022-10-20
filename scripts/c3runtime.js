@@ -3835,15 +3835,18 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.Sprite.Exps.AnimationName,
-		C3.Plugins.System.Exps.lowercase,
+		C3.Plugins.System.Exps.uppercase,
+		C3.Plugins.System.Exps.left,
 		C3.Plugins.Text.Exps.Text,
+		C3.Plugins.System.Exps.lowercase,
+		C3.Plugins.System.Exps.right,
+		C3.Plugins.System.Exps.len,
 		C3.Plugins.DrawingCanvas.Acts.ClearCanvas,
 		C3.Plugins.System.Exps.rgba,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Sprite.Exps.UID,
 		C3.Plugins.System.Cnds.PickAll,
 		C3.Plugins.Sprite.Cnds.PickByUID,
-		C3.Plugins.System.Exps.uppercase,
 		C3.Plugins.System.Cnds.LayerVisible,
 		C3.Behaviors.DragnDrop.Acts.SetEnabled,
 		C3.Plugins.System.Cnds.Else,
@@ -4002,8 +4005,8 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "EYEBROWS",
 		() => "EYES",
-		() => "NOSE",
-		() => "MOUTH",
+		() => "NOSES",
+		() => "MOUTHS",
 		() => "EARS",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4013,6 +4016,17 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const n2 = p._GetNode(2);
+			const f3 = p._GetNode(3).GetBoundMethod();
+			const f4 = p._GetNode(4).GetBoundMethod();
+			const n5 = p._GetNode(5);
+			const f6 = p._GetNode(6).GetBoundMethod();
+			const n7 = p._GetNode(7);
+			return () => (f0(f1(n2.ExpObject(), 1)) + f3(f4(n5.ExpObject(), (f6(n7.ExpObject()) - 1))));
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
